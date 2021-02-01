@@ -1,8 +1,9 @@
-FROM python:3.8-alpine3.10
+FROM python:alpine
 
 # update apk repo
 RUN echo "http://dl-4.alpinelinux.org/alpine/v3.10/main" >> /etc/apk/repositories && \
     echo "http://dl-4.alpinelinux.org/alpine/v3.10/community" >> /etc/apk/repositories
+RUN apk add --no-cache bash
 
 # install chromedriver
 RUN apk update
@@ -12,13 +13,13 @@ RUN apk add chromium chromium-chromedriver
 ENV DISPLAY=:99
 ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
-# upgrade pip
+# Upgrade pip
 RUN pip install --upgrade pip
 
-## Your python project dependencies
+# Python project dependencies
 RUN pip install selenium
 RUN pip install beautifulsoup4
 RUN pip install requests
 
-# Bash script to invoke xvfb, any preliminary commands, then invoke project
-CMD ["python3", "/scripts/main.py"]
+# Main script
+CMD ["bash", "/scripts/main.sh"]

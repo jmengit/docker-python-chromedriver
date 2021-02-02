@@ -22,4 +22,5 @@ RUN pip install beautifulsoup4
 RUN pip install requests
 
 # Main script
-CMD ["bash", "/scripts/main.sh"]
+CMD ["/scripts/main.sh"]
+ENTRYPOINT ["bash"]

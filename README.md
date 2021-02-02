@@ -3,7 +3,7 @@
 Super simple container to run basic basic python scripts that require chromedriver and selenium.
 
 ### Simple Build and Run:
-Map the folder that contains your scripts on your host drive to "/scripts" - The docker will automatically run a file called "main.sh" if one exists in scripts directory.
+The entrypoint for the docker is a bash shell. By default the container will run a script call "main.sh" in the "/scripts" folder. If this is what you want, simply map the folder that contains your scripts on your host drive to "/scripts"
 ```
 docker build -t python-chromedriver https://raw.githubusercontent.com/jmengit/docker-python-chromedriver/main/Dockerfile
 docker run -v "/script/directory/on/host:/scripts" python-chromedriver
